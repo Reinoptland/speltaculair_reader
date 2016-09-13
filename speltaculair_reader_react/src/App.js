@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 
 // Components
 
+// Containers
+import Exercise from './containers/Exercise'
+
 // Material UI Components
 import mui from 'material-ui';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -12,15 +15,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Material UI Colors
 import {
-  red700,
-  grey100, grey300, grey400, grey500,
-  white, darkBlack, fullBlack
+  grey200, green500, lightGreen500,
+  orange400, green100, fullBlack
 } from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: red700,
-    accent1Color: grey400,
+    primary1Color: green500,
+    accent1Color: lightGreen500,
   }
 });
 
@@ -31,6 +33,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <h1>Hello Rein!</h1>
+          <Exercise/>
         </div>
       </MuiThemeProvider>
     )
