@@ -1,5 +1,7 @@
 import exercise from './exercise'
+import progress from './progress'
 
 module.exports = {
-  exercise
+  exercise,
+  progress,
 }

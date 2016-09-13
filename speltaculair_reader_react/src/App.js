@@ -4,9 +4,11 @@ import { connect } from 'react-redux'
 // Actions
 
 // Components
+import Navbar from './components/Navbar'
 
 // Containers
 import Exercise from './containers/Exercise'
+import Progress from './containers/Progress'
 
 // Material UI Components
 import mui from 'material-ui';
@@ -23,6 +25,9 @@ const muiTheme = getMuiTheme({
   palette: {
     primary1Color: green500,
     accent1Color: lightGreen500,
+  },
+  appBar: {
+    height: 125,
   }
 });
 
@@ -32,8 +37,10 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
+          <Navbar/>
           <h1>Hello Rein!</h1>
           <Exercise/>
+          <Progress/>
         </div>
       </MuiThemeProvider>
     )
