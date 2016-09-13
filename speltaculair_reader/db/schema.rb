@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913085747) do
+ActiveRecord::Schema.define(version: 20160913091025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20160913085747) do
     t.text     "solution_text"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "step_id"
+    t.index ["step_id"], name: "index_hints_on_step_id", using: :btree
   end
 
   create_table "reports", force: :cascade do |t|
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160913085747) do
     t.boolean  "completed"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "exercise_id"
+    t.index ["exercise_id"], name: "index_steps_on_exercise_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,6 +70,8 @@ ActiveRecord::Schema.define(version: 20160913085747) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "hints", "steps"
   add_foreign_key "reports", "exercises"
   add_foreign_key "reports", "users"
+  add_foreign_key "steps", "exercises"
 end
