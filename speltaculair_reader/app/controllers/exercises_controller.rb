@@ -7,14 +7,14 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    render_excercise
+    render_exercise
   end
 
   def create
-    @exercise = Excercise.new(exercise_params)
+    @exercise = Exercise.new(exercise_params)
 
     if @exercise.save
-      render_excercise status: :created
+      render_exercise status: :created
     else
       render_errors
     end
@@ -22,7 +22,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(exercise_params)
-      render_excercise status: 226
+      render_exercise status: 226
     else
       render_errors
     end
