@@ -20,6 +20,14 @@ const style = {
     float: 'left',
     margin: '0% 0.5%',
   },
+
+  progressCircle: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    height: '50%',
+    width: '50%',
+    textAlign: 'center',
+  }
 }
 
 
@@ -29,7 +37,7 @@ class Progress extends Component {
     return (
         <Card style={style.progress}>
           <CardTitle title='Progress' />
-          <CircularProgress mode="determinate" value={ 66 } size={ 4 } />
+          <CircularProgress style={style.progressCircle} mode="determinate" value={ 66 } size={ 4 }/>
         </Card>
     )
   }
