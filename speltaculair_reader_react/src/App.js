@@ -51,8 +51,9 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Navbar/>
-          <Exercise/>
           <Progress/>
+          <Exercise/>
+
         </div>
       </MuiThemeProvider>
     )

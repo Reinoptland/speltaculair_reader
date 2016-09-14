@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 // Actions
 
 // Components
+import Summary from '../components/Summary'
 
 // Material UI Components
 
@@ -19,11 +20,11 @@ import {
 const style = {
   exercise: {
     height: 600,
-    width: 900,
+    width: '66%',
     textAlign: 'left',
     display: 'inline-block',
-    position: 'absolute',
-    right: 10,
+    margin: '0% 0.5%',
+    float: 'right',
     background: grey200,
   },
 }
@@ -33,7 +34,10 @@ class Exercise extends Component {
   render() {
     return (
       <Card style= {style.exercise} >
+        {/* <h1>Volgende Oefening</h1> */}
         <CardTitle title="Volgende Oefening"/>
+        <Summary/>
+        <Summary/>
       </Card>
     )
   }

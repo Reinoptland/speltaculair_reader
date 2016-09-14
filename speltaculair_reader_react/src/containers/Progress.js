@@ -14,11 +14,11 @@ import CircularProgress from 'material-ui/CircularProgress';
 const style = {
   progress: {
     height: 600,
-    width: 350,
+    width: '32%',
     textAlign: 'center',
     display: 'inline-block',
-    position: 'absolute',
-    left: 10,
+    float: 'left',
+    margin: '0% 0.5%',
   },
 }
 
