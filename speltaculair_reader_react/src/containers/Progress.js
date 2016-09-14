@@ -6,16 +6,31 @@ import { connect } from 'react-redux'
 // Components
 
 // Material UI Components
+import {Card, CardTitle, } from 'material-ui/Card';
+import CircularProgress from 'material-ui/CircularProgress';
 
 // Material UI Colors
+
+const style = {
+  progress: {
+    height: 600,
+    width: 350,
+    textAlign: 'center',
+    display: 'inline-block',
+    position: 'absolute',
+    left: 10,
+  },
+}
+
 
 class Progress extends Component {
 
   render() {
     return (
-        <div>
-          <h1>Progress component</h1>
-        </div>
+        <Card style={style.progress}>
+          <CardTitle title='Progress' />
+          <CircularProgress mode="determinate" value={ 66 } size={ 4 } />
+        </Card>
     )
   }
 }
