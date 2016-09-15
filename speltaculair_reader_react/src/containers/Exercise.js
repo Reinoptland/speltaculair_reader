@@ -10,7 +10,7 @@ import Summary from '../components/Summary'
 // Material UI Components
 
 import {Card, CardTitle, } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 // Material UI Colors
 
@@ -36,6 +36,10 @@ class Exercise extends Component {
     this.props.getExercises()
   }
 
+  check(){
+    console.log(this.props.exercises)
+  }
+
   render() {
     return (
       <Card style= {style.exercise} >
@@ -43,6 +47,7 @@ class Exercise extends Component {
         <CardTitle title="Volgende Oefening"/>
         <Summary/>
         <Summary/>
+        <RaisedButton onClick={this.check.bind(this)}/>
       </Card>
     )
   }

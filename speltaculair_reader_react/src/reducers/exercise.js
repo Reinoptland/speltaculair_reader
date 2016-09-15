@@ -11,11 +11,28 @@ export default function updateExercise(state = {}, { type, payload }) {
         data: JSON.stringify({
         }),
         contentType: "application/json",
-        dataType: "json"})
+        dataType: "json",
+        async: false
+        })
 
         .fail(function(error) {
           console.log(error);
-        });
+        })
+
+      // return exercises
+      //
+      // const exercises = $.ajax({
+      //   type: "GET",
+      //   url: "http://localhost:3000/exercises",
+      //   data: JSON.stringify({
+      //   }),
+      //   contentType: "application/json",
+      //   dataType: "json"})
+      //
+      //   .fail(function(error) {
+      //     console.log(error);
+      //   })
+      //
       return exercises
 
     default :
