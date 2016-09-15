@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 import { GET_EXERCISES } from '../actions/get-exercises'
 
-export default function updateExercise(state = {}, { type, payload }) {
+export default function updateExercise(state = [], { type, payload }) {
   switch (type) {
     case GET_EXERCISES :
       const exercises = $.ajax({
@@ -19,21 +19,7 @@ export default function updateExercise(state = {}, { type, payload }) {
           console.log(error);
         })
 
-      // return exercises
-      //
-      // const exercises = $.ajax({
-      //   type: "GET",
-      //   url: "http://localhost:3000/exercises",
-      //   data: JSON.stringify({
-      //   }),
-      //   contentType: "application/json",
-      //   dataType: "json"})
-      //
-      //   .fail(function(error) {
-      //     console.log(error);
-      //   })
-      //
-      return exercises
+      return exercises.responseJSON
 
     default :
       return state

@@ -11,6 +11,7 @@ import Summary from '../components/Summary'
 
 import {Card, CardTitle, } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import GridList from 'material-ui/GridList'
 
 // Material UI Colors
 
@@ -23,14 +24,31 @@ const style = {
     height: 600,
     width: '66%',
     textAlign: 'left',
-    display: 'inline-block',
+    display: 'flex',
     margin: '0% 0.5%',
     float: 'right',
     background: grey200,
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
   },
+  gridList: {
+  width: '95%',
+  height: '80%',
+  overflowY: 'auto',
+  marginLeft: '2%',
+  },
+
+
 }
 
 class Exercise extends Component {
+
+  renderSummary(exercise, index) {
+  return (
+      <Summary key={ index }
+        index={ index } { ...exercise } />
+      )
+  }
 
   componentDidMount(){
     this.props.getExercises()
@@ -41,13 +59,15 @@ class Exercise extends Component {
   }
 
   render() {
+    const { exercises } = this.props
+
     return (
       <Card style= {style.exercise} >
         {/* <h1>Volgende Oefening</h1> */}
         <CardTitle title="Volgende Oefening"/>
-        <Summary/>
-        <Summary/>
-        <RaisedButton onClick={this.check.bind(this)}/>
+          <GridList cellHeight={ 150 } cols={ 1 } style={ style.gridList }>
+            { exercises.map(this.renderSummary.bind(this)) }
+          </GridList>
       </Card>
     )
   }
@@ -56,6 +76,7 @@ class Exercise extends Component {
 const mapStateToProps = (state) => {
   return {
     exercises: state.exercise,
+    loaded: state.exercise.loaded
   }
 }
 
