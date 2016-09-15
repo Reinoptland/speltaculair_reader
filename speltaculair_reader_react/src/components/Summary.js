@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Paper from 'material-ui/Paper';
 import LinearProgress from 'material-ui/LinearProgress'
 import RaisedButton from 'material-ui/RaisedButton'
+import startExercise from '../actions/start-exercise'
+import { connect } from 'react-redux'
 
 const summaryStyle = {
   summary: {
@@ -40,9 +42,9 @@ const summaryStyle = {
     margin: '1%',
   },
   buttonStyle:{
-    float: 'right',
+    display: 'inline-block',
+    float: 'left',
     position: 'relative',
-    top: '20%'
   }
 };
 
@@ -59,12 +61,13 @@ class Summary extends Component {
   }
 
   startExercise(){
-    console.log("start!")
+    const { id } = this.props
+    this.props.startExercise(id)
   }
 
   render(){
 
-    const { id, name, description } = this.props
+    const { name, description } = this.props
     const { summary, title, img, progressBar, progressBarSub } = summaryStyle
 
     return (
@@ -74,37 +77,21 @@ class Summary extends Component {
             <img style={img} src="http://placehold.it/75x75"/>
             <img style={img} src="http://placehold.it/75x75"/>
             <img style={img} src="http://placehold.it/75x75"/>
-            { this.renderButton() }
+
             <div style={progressBar}>
               <LinearProgress mode="determinate" value={ 20 } />
               <h4 style={progressBarSub}> 2 van de 10 stappen afgemaakt </h4>
             </div>
+            { this.renderButton() }
           </Paper>
         </div>
     )
   }
 }
 
-// const { name, description } = this.props
-//
-// componentDidMount(){
-//   console.log(this.props)
-// }
-//
-// const Summary = () => (
-//
-//   <div>
-//     <Paper style={summaryStyle.summary} zDepth={5}>
-//       <h1 style= {summaryStyle.title}></h1>
-//       <img style={summaryStyle.img} src="http://placehold.it/75x75"/>
-//       <img style={summaryStyle.img} src="http://placehold.it/75x75"/>
-//       <img style={summaryStyle.img} src="http://placehold.it/75x75"/>
-//       <div style={summaryStyle.progressBar}>
-//         <LinearProgress mode="determinate" value={ 20 } />
-//         <h4 style={summaryStyle.progressBarSub}> 2 van de 10 stappen afgemaakt </h4>
-//       </div>
-//     </Paper>
-//   </div>
-// );
+const mapStateToProps = (state) => {
+  return {
+  }
+}
 
-export default Summary
+export default connect(mapStateToProps, { startExercise })(Summary)

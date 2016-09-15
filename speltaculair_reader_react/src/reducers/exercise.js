@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 import { GET_EXERCISES } from '../actions/get-exercises'
+import { START_EXERCISE } from '../actions/start-exercise'
 
 export default function updateExercise(state = [], { type, payload }) {
   switch (type) {
@@ -20,6 +21,11 @@ export default function updateExercise(state = [], { type, payload }) {
         })
 
       return exercises.responseJSON
+
+    case START_EXERCISE :
+      // const currentExercise =
+      console.log("http://localhost:3000/exercises/" + payload + "/steps")
+      return state
 
     default :
       return state
