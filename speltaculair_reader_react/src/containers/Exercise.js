@@ -76,7 +76,6 @@ class Exercise extends Component {
 const mapStateToProps = (state) => {
   return {
     exercises: state.exercise,
-    loaded: state.exercise.loaded
   }
 }
 

@@ -23,9 +23,23 @@ export default function updateExercise(state = [], { type, payload }) {
       return exercises.responseJSON
 
     case START_EXERCISE :
-      // const currentExercise =
-      console.log("http://localhost:3000/exercises/" + payload + "/steps")
-      return state
+      const currentExercise = $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/exercises/" + payload + "/steps",
+        data: JSON.stringify({
+        }),
+        contentType: "application/json",
+        dataType: "json",
+        async: false
+        })
+
+        .fail(function(error) {
+          console.log(error);
+        })
+
+
+      // console.log("http://localhost:3000/exercises/" + payload + "/steps")
+      return currentExercise.responseJSON
 
     default :
       return state
