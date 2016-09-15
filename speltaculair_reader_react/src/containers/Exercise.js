@@ -54,10 +54,6 @@ class Exercise extends Component {
     this.props.getExercises()
   }
 
-  check(){
-    console.log(this.props.exercises)
-  }
-
   render() {
     const { exercises } = this.props
 
