@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import getSteps from '../actions/get-steps'
 
 // Components
+import Hint from '../components/hint'
 
 // Material UI Components
 
@@ -31,9 +32,7 @@ const style = {
     position: 'relative',
     float: 'right',
     margin: '1%',
-    top: '500px',
   },
-
 
 }
 
@@ -56,6 +55,7 @@ class Step extends Component {
     return (
       <Card style= {style.step} >
         <RaisedButton style= { style.buttonStyle } label={"Volgende Stap!"} primary={true} />
+        <Hint style= { style.hintStyle }/>
       </Card>
     )
   }
