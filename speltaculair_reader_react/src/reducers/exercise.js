@@ -1,7 +1,6 @@
 import $ from 'jquery';
 
 import { GET_EXERCISES } from '../actions/get-exercises'
-import { START_EXERCISE } from '../actions/start-exercise'
 
 export default function updateExercise(state = [], { type, payload }) {
   switch (type) {
