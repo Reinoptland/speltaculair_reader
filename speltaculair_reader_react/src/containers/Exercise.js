@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Actions
+import getExercises from '../actions/get-exercises'
 
 // Components
 import Summary from '../components/Summary'
@@ -31,6 +32,10 @@ const style = {
 
 class Exercise extends Component {
 
+  componentDidMount(){
+    this.props.getExercises()
+  }
+
   render() {
     return (
       <Card style= {style.exercise} >
@@ -45,7 +50,7 @@ class Exercise extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    exercises: state.exercise,
   }
 }
 
@@ -53,4 +58,4 @@ Exercise.propTypes = {
 
 }
 
-export default connect(mapStateToProps, { })(Exercise)
+export default connect(mapStateToProps, { getExercises })(Exercise)
