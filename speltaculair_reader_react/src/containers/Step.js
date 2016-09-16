@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 // Actions
 import nextStep from '../actions/next-step'
+import endExercise from '../actions/end-exercise'
 
 // Components
 import Hint from '../components/hint'
@@ -12,6 +13,7 @@ import Hint from '../components/hint'
 import {Card, CardTitle, } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
+import LinearProgress from 'material-ui/LinearProgress'
 // import GridList from 'material-ui/GridList'
 
 // Material UI Colors
@@ -58,7 +60,16 @@ const style = {
   img: {
     float: 'right',
     margin: '1%',
-  }
+  },
+
+  counter: {
+    display: 'inline-block',
+    margin: '1%',
+    marginLeft: '7.5%',
+
+  },
+
+
 }
 
 class Step extends Component {
@@ -83,6 +94,8 @@ class Step extends Component {
   }
 
 
+
+
   nextStep(){
     const next = this.props.currentStep + 1
     this.props.nextStep(next)
@@ -93,22 +106,27 @@ class Step extends Component {
     this.props.nextStep(previous)
   }
 
+  endExercise(){
+    this.props.endExercise()
+  }
+
   componentDidMount(){
 
   }
 
   render() {
-    const { exercises } = this.props
+    const { exercises, lastStep, percentageComplete, currentStep, allSteps } = this.props
 
     return (
       <Card style= { style.step } >
+        <LinearProgress style={ style.progressBar } mode="determinate" value={ percentageComplete } />
         {this.props.firstStep ? this.disablePrevious() : this.enablePrevious() }
-
-            <RaisedButton
-            style= { style.buttonStyleRight }
-            label={"Volgende Stap!"}
-            primary={true}
-            onClick={this.nextStep.bind(this)}/>
+        <h1 style={style.counter}> {currentStep} / {allSteps}    stappen</h1>
+        <RaisedButton
+        style= { style.buttonStyleRight }
+        label={ lastStep ? "Je bent klaar!" : "Volgende Stap!"}
+        primary={true}
+        onClick={ lastStep ? this.endExercise.bind(this) : this.nextStep.bind(this)}/>
 
         <img style={ style.img } src="http://placehold.it/700x300   "/>
         <Paper style={ style.instruction } zDepth={5}>
@@ -126,6 +144,9 @@ const mapStateToProps = (state) => {
     currentStep: state.currentExercise.currentStep,
     instructionText: state.steps[state.currentExercise.currentStep].instruction,
     firstStep: (state.currentExercise.currentStep == 0),
+    lastStep:( state.currentExercise.currentStep + 1 == state.steps.length),
+    percentageComplete:( 100 / ((state.steps.length - 1) / state.currentExercise.currentStep) ),
+    allSteps:( state.steps.length - 1),
   }
 }
 
@@ -133,4 +154,4 @@ Step.propTypes = {
 
 }
 
-export default connect(mapStateToProps, { nextStep })(Step)
+export default connect(mapStateToProps, { nextStep, endExercise })(Step)
