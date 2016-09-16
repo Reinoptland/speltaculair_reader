@@ -75,6 +75,11 @@ class Step extends Component {
     this.props.nextStep(next)
   }
 
+  previousStep(){
+    const previous = this.props.currentStep - 1
+    this.props.nextStep(previous)
+  }
+
   componentDidMount(){
 
   }
@@ -87,7 +92,8 @@ class Step extends Component {
           {this.props.firstStep ? null : <RaisedButton
             style= { style.buttonStyleLeft }
             label={"Vorige Stap!"}
-            primary={true} /> }
+            primary={true}
+            onClick={this.previousStep.bind(this)}/> }
 
           <RaisedButton
             style= { style.buttonStyleRight }
