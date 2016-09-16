@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 // Actions
 import nextStep from '../actions/next-step'
+import endExercise from '../actions/end-exercise'
 
 // Components
 import Hint from '../components/hint'
@@ -83,6 +84,8 @@ class Step extends Component {
   }
 
 
+
+
   nextStep(){
     const next = this.props.currentStep + 1
     this.props.nextStep(next)
@@ -91,6 +94,10 @@ class Step extends Component {
   previousStep(){
     const previous = this.props.currentStep - 1
     this.props.nextStep(previous)
+  }
+
+  endExercise(){
+    this.props.endExercise()
   }
 
   componentDidMount(){
@@ -106,9 +113,9 @@ class Step extends Component {
 
             <RaisedButton
             style= { style.buttonStyleRight }
-            label={"Volgende Stap!"}
+            label={ this.props.lastStep ? "Je bent klaar!" : "Volgende Stap!"}
             primary={true}
-            onClick={this.nextStep.bind(this)}/>
+            onClick={this.props.lastStep ? this.endExercise.bind(this) : this.nextStep.bind(this)}/>
 
         <img style={ style.img } src="http://placehold.it/700x300   "/>
         <Paper style={ style.instruction } zDepth={5}>
@@ -126,6 +133,7 @@ const mapStateToProps = (state) => {
     currentStep: state.currentExercise.currentStep,
     instructionText: state.steps[state.currentExercise.currentStep].instruction,
     firstStep: (state.currentExercise.currentStep == 0),
+    lastStep:( state.currentExercise.currentStep + 1 == state.steps.length),
   }
 }
 
@@ -133,4 +141,4 @@ Step.propTypes = {
 
 }
 
-export default connect(mapStateToProps, { nextStep })(Step)
+export default connect(mapStateToProps, { nextStep, endExercise })(Step)
