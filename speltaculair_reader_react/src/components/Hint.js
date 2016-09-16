@@ -7,16 +7,19 @@ const hintStyle = {
   card: {
     width: '80%',
     position: 'relative',
-    // float: 'left',
     margin: '1%',
-    top: '450px',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    // float: 'left',
-    // // position: 'relative',
-    // display: 'inline-block',
+    // top: '425px',
+    marginLeft: '10%',
+    marginTop: '5%',
+    // marginRight: 'auto',
+    display: 'inline-block',
     // width: '200px',
   },
+
+  title: {
+    fontSize: '30px',
+  },
+
 }
 
 class Hint extends Component {
@@ -26,11 +29,12 @@ render() {
   return (
       <Card style={ hintStyle.card }>
         <CardHeader
+          titleStyle={ hintStyle.title }
           title="Geef me een hint!"
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <CardText expandable={true}>
+        <CardText style={ hintStyle.expand } expandable={true}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.

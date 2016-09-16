@@ -11,12 +11,13 @@ import Hint from '../components/hint'
 
 import {Card, CardTitle, } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 // import GridList from 'material-ui/GridList'
 
 // Material UI Colors
 
 import {
-  grey200,
+  grey200, grey500,
 } from 'material-ui/styles/colors';
 
 const style = {
@@ -27,13 +28,37 @@ const style = {
     background: grey200,
   },
 
-  buttonStyle: {
+  buttonStyleRight: {
     width: '30%',
     position: 'relative',
     float: 'right',
     margin: '1%',
+    display: 'inline-block',
   },
 
+  buttonStyleLeft: {
+    width: '30%',
+    position: 'relative',
+    float: 'left',
+    margin: '1%',
+    display: 'inline-block',
+  },
+
+  instruction: {
+    width: '30%',
+    height: '300px',
+    float: 'left',
+    // position: 'relative',
+    // display: 'inline-block',
+    margin: '1%',
+    background: grey500,
+    padding: '1%',
+  },
+
+  img: {
+    float: 'right',
+    margin: '1%',
+  }
 }
 
 class Step extends Component {
@@ -53,9 +78,17 @@ class Step extends Component {
     const { exercises } = this.props
 
     return (
-      <Card style= {style.step} >
-        <RaisedButton style= { style.buttonStyle } label={"Volgende Stap!"} primary={true} />
-        <Hint style= { style.hintStyle }/>
+      <Card style= { style.step } >
+          <RaisedButton style= { style.buttonStyleLeft } label={"Vorige Stap!"} primary={true} />
+          <RaisedButton style= { style.buttonStyleRight } label={"Volgende Stap!"} primary={true} />
+
+
+        <img style={ style.img } src="http://placehold.it/700x300   "/>
+        <Paper style={ style.instruction } zDepth={5}>
+          <h1> Hi </h1>
+        </Paper>
+        <Hint/>
+
       </Card>
     )
   }
