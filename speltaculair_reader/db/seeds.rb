@@ -34,12 +34,12 @@ Hint.create([
   {hint_text: "so here is a hint on loops..", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 1, },
   {hint_text: "Another hint here!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 2, },
   {hint_text: "And the final one!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 3, },
-  {hint_text: "A different hint!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 4, }
-  {hint_text: "Another cool tip!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 5, }
-  {hint_text: "And still a different one", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 6, }
-  {hint_text: "Yet a nother", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 7, }
-  {hint_text: "Whoo a hint!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 8, }
-  {hint_text: "And the final final final one!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 9, }
+  {hint_text: "A different hint!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 4, },
+  {hint_text: "Another cool tip!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 5, },
+  {hint_text: "And still a different one", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 6, },
+  {hint_text: "Yet a nother", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 7, },
+  {hint_text: "Whoo a hint!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 8, },
+  {hint_text: "And the final final final one!", solution_text: "and here is the solution", solution: "an image url with th picture resides here", step_id: 9, },
   ])
 
 puts "created #{User.all.length} users"
