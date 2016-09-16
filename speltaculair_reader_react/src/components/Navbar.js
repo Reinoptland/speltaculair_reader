@@ -6,13 +6,20 @@ import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { connect } from 'react-redux'
+import endExercise from '../actions/end-exercise'
+
 
 class Navbar extends Component {
+
+  endExercise(){
+    this.props.endExercise()
+  }
+
   render() {
       return (
         <AppBar
           title="Speltaculair Scratch Reader!!"
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+          iconElementLeft={<IconButton onClick={ this.endExercise.bind(this) } ><NavigationClose /></IconButton>}
           iconElementRight={
             <IconMenu
               iconButtonElement={
@@ -36,4 +43,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {})(Navbar)
+export default connect(mapStateToProps, { endExercise })(Navbar)
