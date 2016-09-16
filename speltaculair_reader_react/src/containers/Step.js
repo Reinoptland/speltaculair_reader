@@ -17,7 +17,7 @@ import Paper from 'material-ui/Paper';
 // Material UI Colors
 
 import {
-  grey200, grey500,
+  grey200, grey500, orange400,
 } from 'material-ui/styles/colors';
 
 const style = {
@@ -51,7 +51,7 @@ const style = {
     // position: 'relative',
     // display: 'inline-block',
     margin: '1%',
-    background: grey500,
+    background: orange400,
     padding: '1%',
   },
 
@@ -63,12 +63,25 @@ const style = {
 
 class Step extends Component {
 
-  // renderSummary(exercise, index) {
-  // return (
-  //     <Summary key={ index }
-  //       index={ index } { ...exercise } />
-  //     )
-  // }
+  enablePrevious() {
+  return (
+        <RaisedButton
+        style= { style.buttonStyleLeft }
+        label={"Vorige Stap!"}
+        primary={true}
+        onClick={this.previousStep.bind(this)}/>
+    )
+  }
+
+  disablePrevious() {
+  return (
+        <RaisedButton
+        style= { style.buttonStyleLeft }
+        label={"Vorige Stap!"}
+        disabled = {true} />
+    )
+  }
+
 
   nextStep(){
     const next = this.props.currentStep + 1
@@ -89,19 +102,13 @@ class Step extends Component {
 
     return (
       <Card style= { style.step } >
-          {this.props.firstStep ? null : <RaisedButton
-            style= { style.buttonStyleLeft }
-            label={"Vorige Stap!"}
-            primary={true}
-            onClick={this.previousStep.bind(this)}/> }
+        {this.props.firstStep ? this.disablePrevious() : this.enablePrevious() }
 
-          <RaisedButton
+            <RaisedButton
             style= { style.buttonStyleRight }
             label={"Volgende Stap!"}
             primary={true}
-            onClick={this.nextStep.bind(this)}
-            />
-
+            onClick={this.nextStep.bind(this)}/>
 
         <img style={ style.img } src="http://placehold.it/700x300   "/>
         <Paper style={ style.instruction } zDepth={5}>
