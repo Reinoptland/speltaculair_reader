@@ -74,13 +74,13 @@ class Summary extends Component {
         <div>
           <Paper style={summary} zDepth={5}>
             <h1 style= {title}>{ name }</h1>
-            <img style={img} src="http://placehold.it/75x75"/>
-            <img style={img} src="http://placehold.it/75x75"/>
-            <img style={img} src="http://placehold.it/75x75"/>
+            <img style={img} src="http://res.cloudinary.com/speltaculair/image/upload/v1474013180/Reader/Schermafbeelding_2016-09-12_om_11.52.15_oabdqa.png"/>
+            <img style={img} src="http://res.cloudinary.com/speltaculair/image/upload/v1474013166/Reader/Schermafbeelding_2016-09-12_om_11.52.03_z4ixrz.png"/>
+            <img style={img} src="http://res.cloudinary.com/speltaculair/image/upload/v1474013157/Reader/Schermafbeelding_2016-09-12_om_11.50.23_cqpim7.png"/>
 
             <div style={progressBar}>
               <LinearProgress mode="determinate" value={ 20 } />
-              <h4 style={progressBarSub}> 2 van de 10 stappen afgemaakt </h4>
+              <h4 style={progressBarSub}> record progress here</h4>
             </div>
             { this.renderButton() }
           </Paper>

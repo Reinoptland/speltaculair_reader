@@ -128,7 +128,7 @@ class Step extends Component {
         primary={true}
         onClick={ lastStep ? this.endExercise.bind(this) : this.nextStep.bind(this)}/>
 
-        <img style={ style.img } src="http://placehold.it/700x300   "/>
+        <img style={ style.img } src="https://placeimg.com/700/300/any   "/>
         <Paper style={ style.instruction } zDepth={5}>
           <h1> { this.props.instructionText } </h1>
         </Paper>
