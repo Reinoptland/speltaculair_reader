@@ -30,15 +30,12 @@ render() {
       <Card style={ hintStyle.card }>
         <CardHeader
           titleStyle={ hintStyle.title }
-          title="Geef me een hint!"
+          title="Geef mij een hint!"
           actAsExpander={true}
           showExpandableButton={true}
         />
         <CardText style={ hintStyle.expand } expandable={true}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          {this.props.hintText}
         </CardText>
       </Card>
     )
@@ -46,6 +43,7 @@ render() {
 }
 const mapStateToProps = (state) => {
   return {
+    hintText: state.hints.hints[0].hint_text
   }
 }
 
