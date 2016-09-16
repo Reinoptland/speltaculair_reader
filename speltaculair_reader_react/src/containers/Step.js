@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 // Actions
-import getSteps from '../actions/get-steps'
+import nextStep from '../actions/next-step'
 
 // Components
 import Hint from '../components/hint'
@@ -70,6 +70,11 @@ class Step extends Component {
   //     )
   // }
 
+  nextStep(){
+    const next = this.props.currentStep + 1
+    this.props.nextStep(next)
+  }
+
   componentDidMount(){
 
   }
@@ -79,13 +84,22 @@ class Step extends Component {
 
     return (
       <Card style= { style.step } >
-          <RaisedButton style= { style.buttonStyleLeft } label={"Vorige Stap!"} primary={true} />
-          <RaisedButton style= { style.buttonStyleRight } label={"Volgende Stap!"} primary={true} />
+          {this.props.firstStep ? null : <RaisedButton
+            style= { style.buttonStyleLeft }
+            label={"Vorige Stap!"}
+            primary={true} /> }
+
+          <RaisedButton
+            style= { style.buttonStyleRight }
+            label={"Volgende Stap!"}
+            primary={true}
+            onClick={this.nextStep.bind(this)}
+            />
 
 
         <img style={ style.img } src="http://placehold.it/700x300   "/>
         <Paper style={ style.instruction } zDepth={5}>
-          <h1> { this.props.instruction_text } </h1>
+          <h1> { this.props.instructionText } </h1>
         </Paper>
         <Hint/>
 
@@ -96,7 +110,9 @@ class Step extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    instruction_text: state.steps[0].instruction,
+    currentStep: state.currentExercise.currentStep,
+    instructionText: state.steps[state.currentExercise.currentStep].instruction,
+    firstStep: (state.currentExercise.currentStep == 0),
   }
 }
 
@@ -104,4 +120,4 @@ Step.propTypes = {
 
 }
 
-export default connect(mapStateToProps, { getSteps })(Step)
+export default connect(mapStateToProps, { nextStep })(Step)
