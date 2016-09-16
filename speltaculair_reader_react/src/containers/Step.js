@@ -121,7 +121,7 @@ class Step extends Component {
       <Card style= { style.step } >
         <LinearProgress style={ style.progressBar } mode="determinate" value={ percentageComplete } />
         {this.props.firstStep ? this.disablePrevious() : this.enablePrevious() }
-        <h1 style={style.counter}> {currentStep} / {allSteps}    stappen</h1>
+        <h1 style={style.counter}> {currentStep} / {allSteps}     stappen</h1>
         <RaisedButton
         style= { style.buttonStyleRight }
         label={ lastStep ? "Je bent klaar!" : "Volgende Stap!"}
