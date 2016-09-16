@@ -121,14 +121,14 @@ class Step extends Component {
       <Card style= { style.step } >
         <LinearProgress style={ style.progressBar } mode="determinate" value={ percentageComplete } />
         {this.props.firstStep ? this.disablePrevious() : this.enablePrevious() }
-        <h1 style={style.counter}> {currentStep} / {allSteps}    stappen</h1>
+        <h1 style={style.counter}> {currentStep} / {allSteps}     stappen</h1>
         <RaisedButton
         style= { style.buttonStyleRight }
         label={ lastStep ? "Je bent klaar!" : "Volgende Stap!"}
         primary={true}
         onClick={ lastStep ? this.endExercise.bind(this) : this.nextStep.bind(this)}/>
 
-        <img style={ style.img } src="http://placehold.it/700x300   "/>
+        <img style={ style.img } src="https://placeimg.com/700/300/any   "/>
         <Paper style={ style.instruction } zDepth={5}>
           <h1> { this.props.instructionText } </h1>
         </Paper>

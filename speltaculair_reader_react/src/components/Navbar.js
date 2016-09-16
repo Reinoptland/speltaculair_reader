@@ -18,8 +18,10 @@ class Navbar extends Component {
   render() {
       return (
         <AppBar
+          
           title="Speltaculair Scratch Reader!!"
           iconElementLeft={<IconButton onClick={ this.endExercise.bind(this) } ><NavigationClose /></IconButton>}
+
           iconElementRight={
             <IconMenu
               iconButtonElement={
@@ -28,12 +30,10 @@ class Navbar extends Component {
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-              <MenuItem primaryText="Refresh" />
-              <MenuItem primaryText="Help" />
-              <MenuItem primaryText="Sign out" />
             </IconMenu>
+
           }
-        />
+        >  </AppBar>
     )
   }
 }
