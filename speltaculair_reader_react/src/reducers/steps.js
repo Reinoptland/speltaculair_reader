@@ -1,13 +1,13 @@
 import $ from 'jquery';
 
-import { GET_EXERCISES } from '../actions/get-exercises'
+import { START_EXERCISE } from '../actions/start-exercise'
 
-export default function updateExercise(state = [], { type, payload }) {
+export default function updateStep(state = [], { type, payload }) {
   switch (type) {
-    case GET_EXERCISES :
-      const exercises = $.ajax({
+    case START_EXERCISE :
+      const currentExercise = $.ajax({
         type: "GET",
-        url: "http://localhost:3000/exercises",
+        url: "http://localhost:3000/exercises/" + payload + "/steps",
         data: JSON.stringify({
         }),
         contentType: "application/json",
@@ -18,7 +18,7 @@ export default function updateExercise(state = [], { type, payload }) {
         .fail(function(error) {
           console.log(error);
         })
-      return exercises.responseJSON
+      return currentExercise.responseJSON
 
     default :
       return state

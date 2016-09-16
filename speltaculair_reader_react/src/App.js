@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 // Containers
 import Exercise from './containers/Exercise'
 import Progress from './containers/Progress'
+import Step from './containers/Step'
 
 // Material UI Components
 import mui from 'material-ui'
@@ -40,7 +41,7 @@ const muiTheme = getMuiTheme({
     shadowColor: fullBlack,
   },
   appBar: {
-    height: 125,
+    height: 75,
   }
 });
 
@@ -51,9 +52,9 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Navbar/>
-          <Progress/>
-          <Exercise/>
-
+          {this.props.displayOverview ? <Progress/> : null }
+          {this.props.displayOverview ? <Exercise/> : null }
+          {this.props.displayExercise ? <Step/> : null}
         </div>
       </MuiThemeProvider>
     )
@@ -62,7 +63,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    displayOverview: state.display.displayOverview,
+    displayExercise: state.display.displayExercise
   }
 }
 
