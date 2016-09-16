@@ -85,7 +85,7 @@ class Step extends Component {
 
         <img style={ style.img } src="http://placehold.it/700x300   "/>
         <Paper style={ style.instruction } zDepth={5}>
-          <h1> Hi </h1>
+          <h1> { this.props.instruction_text } </h1>
         </Paper>
         <Hint/>
 
@@ -96,7 +96,7 @@ class Step extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    instruction_text: state.steps[0].instruction,
   }
 }
 
